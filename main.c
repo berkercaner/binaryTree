@@ -66,6 +66,9 @@ int main()
 				printf("\nEnter the value:  ");
 				scanf("%d",&value);
 				mainTree = addNode(mainTree,value);
+				nodeNumber++;
+				array = (int*) realloc(array,sizeof(int)*nodeNumber);
+				array[nodeNumber-1] = value;
 				break;
 			
 			case display:
@@ -84,12 +87,23 @@ int main()
 			
 			case deleteTree:
 				deleteTheTree(mainTree);
+				free(array);
 				mainTree = NULL;
+				nodeNumber = 0;
 				break;	
 			
 			case delNode:
 				printf("Enter the value:  ");
 				scanf("%d", &value);
+				for(i = 0; i<nodeNumber; i++)
+				{	
+					if(array[i]==value)
+						break;
+				}
+				for(i=i;i<nodeNumber;i++)
+					array[i] = array[i+1];
+				
+				nodeNumber--;
 				mainTree = deleteNode(mainTree,value);
 				break;		
 			
