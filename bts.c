@@ -90,6 +90,8 @@ struct node* searchTree(struct node* tree, int value)
 		return searchTree(tree->left, value);
 	else if(tree->data == value)	
 		return tree;
+	
+	return tree;
 }
 
 struct node* findMinimum(struct node* tree)
@@ -148,6 +150,17 @@ void findNode(struct node* tree, int value)
 		printf("\n%d doesn't exist\n",value);
 	else	
 		printf("\n%d exists \n", tempT->data);	
+}
+
+void deleteTheTree(struct node* tree)
+{
+	if(tree == NULL) 
+		return;
+		
+	deleteTheTree(tree->left);
+	deleteTheTree(tree->right);
+	
+	free(tree);
 }
 
 
