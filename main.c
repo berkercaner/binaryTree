@@ -22,6 +22,7 @@ int main()
 		printf("6- Find a node \n");
 		printf("7- Delete the tree \n");
 		printf("8- Delete a node \n");
+		printf("9- Save the tree \n");
 		
 		printf("\n Make the choice:  ");
 		
@@ -32,14 +33,15 @@ int main()
 		{
 			case create:
 				printf("\n Enter node number of your tree: ");
-				scanf("%d",&nodeNumber);
-				array = (int*) malloc(sizeof(int)*nodeNumber);
-				for(i=0; i<nodeNumber; i++)
+				scanf("%d",&count);
+				array = (int*) malloc(sizeof(int)*count);
+				for(i=0; i<count; i++)
 				{
 					printf("Enter Value of Node:  ");	
 					scanf("%d",&array[i]);
 				}
-				mainTree = createTree(mainTree, array,nodeNumber);
+				nodeNumber = count;
+				mainTree = createTree(mainTree, array,count);
 				break;
 				
 			
@@ -55,6 +57,7 @@ int main()
 				{	
 					fscanf(fp,"%d",&array[count]);
 				}	
+				nodeNumber = count++;
 				fclose(fp);
 				mainTree = createTree(mainTree,array,i);
 				break;
@@ -89,7 +92,16 @@ int main()
 				scanf("%d", &value);
 				mainTree = deleteNode(mainTree,value);
 				break;		
-				
+			
+			case saveTree:
+				i = 0;
+				fp = fopen("savedTree.txt","w");
+				while(i < nodeNumber)
+				{
+					fprintf(fp,"%d ",array[i]);
+					i++;
+				}
+				fclose(fp);
 		}
 		
 	}

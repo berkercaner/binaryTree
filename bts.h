@@ -8,7 +8,8 @@ enum switches{
 	draw,
 	find,
 	deleteTree,
-	delNode
+	delNode,
+	saveTree
 };
 
 struct node;
