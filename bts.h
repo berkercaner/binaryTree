@@ -9,7 +9,8 @@ enum switches{
 	find,
 	deleteTree,
 	delNode,
-	saveTree
+	saveTree,
+	parent
 };
 
 struct node;
@@ -29,6 +30,8 @@ void findNode(struct node* , int );
 struct node* deleteNode(struct node*, int);
 
 void deleteTheTree(struct node* );
+
+void findParent(struct node*, int, int);
 #endif
 
 

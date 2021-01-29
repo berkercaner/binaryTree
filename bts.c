@@ -163,6 +163,23 @@ void deleteTheTree(struct node* tree)
 	free(tree);
 }
 
+void findParent(struct node* tree, int nodeValue, int tempParent)
+{
+	if(tree == NULL)
+		return;
+	
+	
+	if(tree->data == nodeValue)
+	{
+		if (tempParent == -1)
+			printf("It's root, has no parent");
+		else
+			printf("%d",tempParent);
+	}
+	
+	findParent(tree->left, nodeValue, tree->data);
+	findParent(tree->right, nodeValue, tree->data);
+}
 
 
 
